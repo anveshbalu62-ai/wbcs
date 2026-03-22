@@ -36,10 +36,17 @@ def ActivateUsers(request):
         if user_id:  # Ensure user_id is not None
             status = 'activated'
             print("Activating user with ID =", user_id)
-            UserRegistrationModel.objects.filter(id=user_id).update(status=status)
+            user = UserRegistrationModel.objects.filter(id=user_id)
+            if user.exists():
+                user.update(status=status)
+                messages.success(request, f"User '{user.first().name}' has been activated successfully!")
+            else:
+                messages.error(request, "User not found.")
+        else:
+            messages.error(request, "Invalid User ID.")
 
         # Redirect to the view where users are listed after activation
-        return redirect('RegisterUsersView')  # Replace with your actual URL name
+        return redirect('RegisterUsersView')
 
 def DeleteUsers(request):
     if request.method == 'GET':
@@ -47,9 +54,16 @@ def DeleteUsers(request):
         
         if user_id:  # Ensure user_id is not None
             print("Deleting user with ID =", user_id)
-            UserRegistrationModel.objects.filter(id=user_id).delete()
-
+            user = UserRegistrationModel.objects.filter(id=user_id)
+            if user.exists():
+                name = user.first().name
+                user.delete()
+                messages.warning(request, f"User '{name}' has been deleted.")
+            else:
+                messages.error(request, "User not found.")
+        else:
+            messages.error(request, "Invalid User ID.")
+            
         # Redirect to the view where users are listed after deletion
-        return redirect('RegisterUsersView')  # Replace with your actual URL name
-
+        return redirect('RegisterUsersView')
 
