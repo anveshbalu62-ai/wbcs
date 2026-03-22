@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostics Portal | WBC Classification</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url("{% static 'new_bg.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <aside class="glass-sidebar">
+        <div class="sidebar-logo">
+            <i class="fa-solid fa-virus-covid"></i>
+            <span>WBC<span>Portal</span></span>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="{% url 'UserHome' %}" class="nav-item {% if 'UserHome' in request.path %}active{% endif %}">
+                <i class="fa-solid fa-gauge-high"></i> Dashboard
+            </a>
+            <a href="{% url 'training' %}" class="nav-item {% if 'training' in request.path %}active{% endif %}">
+                <i class="fa-solid fa-dna"></i> Training
+            </a>
+            <a href="{% url 'predictions' %}" class="nav-item {% if 'predictions' in request.path %}active{% endif %}">
+                <i class="fa-solid fa-magnifying-glass-chart"></i> Analysis
+            </a>
+            <a href="{% url 'index' %}" class="nav-item" style="margin-top: auto; color: #ef4444;">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content animate-fade">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <div>
+                <h1 style="margin:0; font-size: 1.75rem;">White Blood Cell Diagnostic Tool</h1>
+                <p style="color: var(--text-muted);">Welcome back, {{ request.session.loggeduser|default:"Scientist" }}</p>
+            </div>
+            <div class="glass-panel" style="padding: 10px 20px; border-radius: 30px; font-size: 0.875rem; color: var(--success);">
+                <i class="fa-solid fa-circle-check"></i> System Operational
+            </div>
+        </div>
+
+        {% block contents %}
+        {% endblock %}
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+
+<div class="card-glass" style="max-width: 750px; margin: 1rem auto; animation: fadeUp 0.6s ease-out;">
+    <div style="text-align: center; margin-bottom: 2.5rem;">
+        <i class="fa-solid fa-file-waveform" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
+        <h2 style="margin:0; font-size: 1.5rem; letter-spacing: -0.01em;">Practitioner Registration</h2>
+        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Register your profile to start using diagnostic tools</p>
+    </div>
+
+    <form method="POST" action="{% url 'UserRegisterForm' %}">
+        {% csrf_token %}
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div>
+                <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Full Name</label>
+                <input type="text" name="name" required placeholder="Dr. John Doe">
+            </div>
+            <div>
+                <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Login ID</label>
+                <input type="text" name="loginid" required placeholder="johndoe123">
+            </div>
+            <div>
+                <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Password</label>
+                <input type="password" name="password" required placeholder="••••••••">
+            </div>
+            <div>
+                <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Mobile Number</label>
+                <input type="text" name="mobile" required placeholder="+1 234 567 8900">
+            </div>
+            <div style="grid-column: span 2;">
+                <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Email Address</label>
+                <input type="email" name="email" required placeholder="john.doe@hospital.com">
+            </div>
+            <div>
+                <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Locality</label>
+                <input type="text" name="locality" required placeholder="District Area">
+            </div>
+            <div>
+                <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">City</label>
+                <input type="text" name="city" required placeholder="New York">
+            </div>
+            <div>
+                <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">State</label>
+                <input type="text" name="state" required placeholder="NY">
+            </div>
+            <div style="grid-column: span 2;">
+                <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">Work Address</label>
+                <textarea name="address" required rows="3" placeholder="Hospital Unit, Street Address..."></textarea>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit" class="btn-premium" style="flex: 2; justify-content: center; display: flex;">Finalize Registration</button>
+            <button type="reset" class="btn-premium" style="flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); justify-content: center; display: flex;">Reset</button>
+        </div>
+
+        {% if messages %}
+            <div style="margin-top: 1.5rem;">
+                {% for message in messages %}
+                    <div class="glass-panel" style="padding: 12px; font-size: 0.875rem; color: var(--success); border-color: rgba(34, 197, 94, 0.2); text-align: center; background: rgba(34, 197, 94, 0.05);">
+                        <i class="fa-solid fa-circle-check"></i> {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </form>
+</div>
+
+<style>
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+{% endblock %}

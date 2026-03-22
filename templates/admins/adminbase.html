@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration Console | WBC Diagnostics</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.92)), url("{% static 'new_bg.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .admin-nav {
+            border-left-color: #f59e0b !important;
+        }
+        .admin-nav.active {
+            background: rgba(245, 158, 11, 0.1) !important;
+            color: #f59e0b !important;
+        }
+    </style>
+</head>
+<body>
+    <aside class="glass-sidebar" style="border-right: 1px solid rgba(245, 158, 11, 0.2);">
+        <div class="sidebar-logo">
+            <i class="fa-solid fa-user-shield" style="color: #f59e0b;"></i>
+            <span>Admin<span>Core</span></span>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="{% url 'AdminHome' %}" class="nav-item admin-nav {% if 'AdminHome' in request.path %}active{% endif %}">
+                <i class="fa-solid fa-gauge-high"></i> Overview
+            </a>
+            <a href="{% url 'RegisterUsersView' %}" class="nav-item admin-nav {% if 'userDetails' in request.path %}active{% endif %}">
+                <i class="fa-solid fa-users-gear"></i> User Management
+            </a>
+            <a href="{% url 'index' %}" class="nav-item" style="margin-top: auto; color: #ef4444;">
+                <i class="fa-solid fa-power-off"></i> Exit Console
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content animate-fade">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <div>
+                <h1 style="margin:0; font-size: 1.75rem;">System Administration</h1>
+                <p style="color: var(--text-muted);">Master Control & User Authentication</p>
+            </div>
+            <div class="glass-panel" style="padding: 10px 20px; border-radius: 30px; font-size: 0.875rem; color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);">
+                <i class="fa-solid fa-shield-halved"></i> Root Access Enabled
+            </div>
+        </div>
+
+        {% block contents %}
+        {% endblock %}
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</body>
+</html>

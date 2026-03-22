@@ -1,0 +1,35 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Static files
+staticfiles/
+
+# Python
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# Models
+# Allowing .h5 and .keras files as they are needed for prediction on Render
+# *.h5
+# *.keras
+*.pth
+*.pt
+*.model
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

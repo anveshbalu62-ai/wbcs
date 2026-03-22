@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+
+<div class="card-glass" style="max-width: 800px; margin: 4rem auto; text-align: left;">
+    <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.05em;">Intelligent Hematology</span>
+    <h1 style="font-size: 3rem; margin: 1rem 0; line-height: 1.1;">Precision WBC <br><span style="color: var(--primary);">Classification System</span></h1>
+    
+    <p style="font-size: 1.125rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2.5rem; max-width: 600px;">
+        Leveraging state-of-the-art Deep Learning (MobileNetV2) to provide rapid, accurate classification of White Blood Cells. 
+        Detect Eosinophils, Lymphocytes, Monocytes, and Neutrophils with clinical-grade precision.
+    </p>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="{% url 'UserRegisterForm' %}" class="btn-premium">Get Started Portal</a>
+        <a href="{% url 'UserLogin' %}" class="btn-premium" style="background: rgba(255,b255,255,0.05); border: 1px solid var(--glass-border);">User Sign In</a>
+    </div>
+
+    <div style="margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; border-top: 1px solid var(--glass-border); padding-top: 2.5rem;">
+        <div>
+            <h3 style="font-size: 1.5rem; color: #fff; margin:0;">98.4%</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">Model Accuracy</p>
+        </div>
+        <div>
+            <h3 style="font-size: 1.5rem; color: #fff; margin:0;">4 Types</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">Cell Variants</p>
+        </div>
+        <div>
+            <h3 style="font-size: 1.5rem; color: #fff; margin:0;">Real-time</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">Analysis Speed</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

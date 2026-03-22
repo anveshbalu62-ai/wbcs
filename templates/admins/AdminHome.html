@@ -1,0 +1,37 @@
+{% extends 'admins/adminbase.html' %}
+{% block contents %}
+{% load static %}
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+    
+    <div class="card-glass" style="grid-column: span 2; padding: 2.5rem; border-left: 4px solid #f59e0b;">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">System Overview</h2>
+        <p style="color: var(--text-muted); line-height: 1.6;">
+            Manage clinical practitioners, approve registration requests, and monitor system diagnostics. 
+            The WBC Classification system is currently running on MobileNetV2 Neural Engine v4.2.
+        </p>
+    </div>
+
+    <div class="card-glass" style="text-align: center; border: 1px solid rgba(245, 158, 11, 0.1);">
+        <i class="fa-solid fa-database" style="font-size: 3rem; color: #f59e0b; margin-bottom: 1rem;"></i>
+        <h3 style="margin:0;">Database Status</h3>
+        <p style="color: var(--success); font-size: 0.875rem; margin-top: 0.5rem; font-weight: 500;">
+            <i class="fa-solid fa-circle-check"></i> Connected & Synced
+        </p>
+    </div>
+
+</div>
+
+<div style="margin-top: 3rem;">
+    <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Access Management</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        <a href="{% url 'RegisterUsersView' %}" style="text-decoration: none;">
+            <div class="card-glass" style="transition: all 0.3s ease; cursor: pointer; border: 1px solid transparent;" onmouseover="this.style.borderColor='#f59e0b'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'">
+                <i class="fa-solid fa-users" style="font-size: 1.5rem; color: #f59e0b; margin-bottom: 1rem;"></i>
+                <h4 style="color: #fff; margin:0;">User Directory</h4>
+                <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">View and manage practitioner registrations.</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

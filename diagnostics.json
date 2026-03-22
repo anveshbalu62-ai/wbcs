@@ -1,0 +1,84 @@
+{
+    "test": {
+        "EOSINOPHIL": {
+            "correct": 52,
+            "total": 100,
+            "predictions": {
+                "LYMPHOCYTE": 29,
+                "EOSINOPHIL": 52,
+                "NEUTROPHIL": 13,
+                "MONOCYTE": 6
+            }
+        },
+        "LYMPHOCYTE": {
+            "correct": 63,
+            "total": 100,
+            "predictions": {
+                "LYMPHOCYTE": 63,
+                "EOSINOPHIL": 11,
+                "MONOCYTE": 15,
+                "NEUTROPHIL": 11
+            }
+        },
+        "MONOCYTE": {
+            "correct": 63,
+            "total": 100,
+            "predictions": {
+                "MONOCYTE": 63,
+                "EOSINOPHIL": 21,
+                "LYMPHOCYTE": 11,
+                "NEUTROPHIL": 5
+            }
+        },
+        "NEUTROPHIL": {
+            "correct": 50,
+            "total": 100,
+            "predictions": {
+                "NEUTROPHIL": 50,
+                "EOSINOPHIL": 29,
+                "LYMPHOCYTE": 14,
+                "MONOCYTE": 7
+            }
+        }
+    },
+    "train": {
+        "EOSINOPHIL": {
+            "correct": 70,
+            "total": 100,
+            "predictions": {
+                "EOSINOPHIL": 70,
+                "NEUTROPHIL": 17,
+                "MONOCYTE": 5,
+                "LYMPHOCYTE": 8
+            }
+        },
+        "LYMPHOCYTE": {
+            "correct": 99,
+            "total": 100,
+            "predictions": {
+                "LYMPHOCYTE": 99,
+                "EOSINOPHIL": 1
+            }
+        },
+        "MONOCYTE": {
+            "correct": 85,
+            "total": 100,
+            "predictions": {
+                "MONOCYTE": 85,
+                "LYMPHOCYTE": 10,
+                "EOSINOPHIL": 3,
+                "NEUTROPHIL": 2
+            }
+        },
+        "NEUTROPHIL": {
+            "correct": 58,
+            "total": 100,
+            "predictions": {
+                "NEUTROPHIL": 58,
+                "EOSINOPHIL": 26,
+                "LYMPHOCYTE": 6,
+                "MONOCYTE": 10
+            }
+        }
+    }
+}

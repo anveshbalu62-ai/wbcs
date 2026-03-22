@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WBC Classification | Medical Diagnostics</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url("{% static 'new_bg.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <aside class="glass-sidebar">
+        <div class="sidebar-logo">
+            <i class="fa-solid fa-microscope"></i>
+            <span>WBC<span>Scan</span></span>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="{% url 'index' %}" class="nav-item {% if request.path == '/' or request.path == '/index' %}active{% endif %}">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="{% url 'UserLogin' %}" class="nav-item {% if request.path == '/UserLogin' %}active{% endif %}">
+                <i class="fa-solid fa-user-doctor"></i> User Login
+            </a>
+            <a href="{% url 'AdminLogin' %}" class="nav-item {% if 'Admin' in request.path %}active{% endif %}">
+                <i class="fa-solid fa-user-shield"></i> Admin Login
+            </a>
+            <a href="{% url 'UserRegisterForm' %}" class="nav-item {% if request.path == '/UserRegisterForm' %}active{% endif %}">
+                <i class="fa-solid fa-user-plus"></i> Create Account
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content animate-fade">
+        {% block contents %}
+        {% endblock %}
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</body>
+</html>

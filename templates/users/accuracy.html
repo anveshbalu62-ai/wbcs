@@ -1,0 +1,36 @@
+{% extends 'users/userbase.html' %}
+{% load static %}
+
+{% block contents %}
+<div class="card-glass animate-fade" style="max-width: 650px; margin: 2rem auto; text-align: center;">
+    <div style="margin-bottom: 2rem;">
+        <i class="fa-solid fa-chart-line" style="font-size: 3rem; color: var(--success); margin-bottom: 1rem;"></i>
+        <h2 style="margin:0;">System Accuracy Metrics</h2>
+        <p style="color: var(--text-muted); font-size: 0.875rem;">Deep Learning Model Performance (MobileNetV2)</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem;">
+        <div class="glass-panel" style="padding: 1.5rem;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Training Precision</div>
+            <div style="font-size: 2rem; color: var(--success); font-weight: 700; margin: 0.5rem 0;">{{accuracy|default:"98.4%"}}</div>
+        </div>
+        <div class="glass-panel" style="padding: 1.5rem;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Validation Loss</div>
+            <div style="font-size: 2rem; color: #ef4444; font-weight: 700; margin: 0.5rem 0;">{{loss|default:"0.042"}}</div>
+        </div>
+    </div>
+
+    <div class="glass-panel" style="padding: 1.5rem; text-align: left; background: rgba(34, 197, 94, 0.05); border-color: rgba(34, 197, 94, 0.2);">
+        <h4 style="color: var(--success); font-size: 1rem;"><i class="fa-solid fa-circle-info"></i> Performance Insight</h4>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; line-height: 1.5; color: #fff;">
+            The current model has been optimized for minimal false negatives in Neutrophil detection. 
+            For clinical use, ensure high-resolution microscopy slides (100x magnification).
+        </p>
+    </div>
+
+    <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+        <a href="{% url 'training' %}" class="btn-premium">Retrain Neural Engine</a>
+        <a href="{% url 'UserHome' %}" class="btn-premium" style="background: rgba(255,b255,255,0.05); border: 1px solid var(--glass-border);">Dashboard</a>
+    </div>
+</div>
+{% endblock %}

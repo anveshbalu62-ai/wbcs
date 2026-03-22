@@ -1,0 +1,60 @@
+{% extends "users/userbase.html" %}
+{% load static %}
+
+{% block contents %}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; animation: slideIn 0.8s ease-out;">
+    
+    <!-- Hero Welcome Card -->
+    <div class="card-glass" style="grid-column: span 2; display: flex; align-items: center; gap: 2.5rem; padding: 3rem;">
+        <div style="flex: 1;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">WBC Diagnostic <span style="color: var(--primary);">Intelligence</span></h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+                Our AI-driven system analyzed your cell images using MobileNetV2 architecture, trained on professional hematology datasets for clinical-grade precision.
+            </p>
+            <div style="display: flex; gap: 1rem;">
+                <a href="{% url 'predictions' %}" class="btn-premium">Perform Analysis</a>
+                <a href="{% url 'training' %}" class="btn-premium" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);">Update Neural Model</a>
+            </div>
+        </div>
+        <div style="width: 200px; opacity: 0.8;">
+            <i class="fa-solid fa-microscope" style="font-size: 180px; color: var(--primary);"></i>
+        </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="card-glass">
+        <h3 style="color: var(--text-muted); font-size: 0.875rem; text-transform: uppercase;">Analyzable Types</h3>
+        <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px;">
+                <span>Eosinophils</span> <i class="fa-solid fa-check-double" style="color: var(--success);"></i>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px;">
+                <span>Lymphocytes</span> <i class="fa-solid fa-check-double" style="color: var(--success);"></i>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px;">
+                <span>Monocytes</span> <i class="fa-solid fa-check-double" style="color: var(--success);"></i>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px;">
+                <span>Neutrophils</span> <i class="fa-solid fa-check-double" style="color: var(--success);"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Health -->
+    <div class="card-glass" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <div style="width: 80px; height: 80px; border-radius: 50%; border: 4px solid var(--success); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+            <i class="fa-solid fa-bolt" style="color: var(--success); font-size: 2rem;"></i>
+        </div>
+        <h3 style="margin:0;">Optimized Edge</h3>
+        <p style="color: var(--text-muted); font-size: 0.875rem;">Deep Learning Engine is currently running at peak efficiency using GPU acceleration.</p>
+    </div>
+
+</div>
+
+<style>
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+</style>
+{% endblock %}
