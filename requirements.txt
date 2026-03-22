@@ -4,3 +4,5 @@ numpy
 pillow
 gunicorn
 whitenoise
+pandas
+matplotlib
