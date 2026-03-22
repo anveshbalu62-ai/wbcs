@@ -8,20 +8,24 @@ from tensorflow.keras.models import load_model # type: ignore
 
 def UserRegisterActions(request):
     if request.method == 'POST':
-        user = UserRegistrationModel(
-            name=request.POST['name'],
-            loginid=request.POST['loginid'],
-            password=request.POST['password'],
-            mobile=request.POST['mobile'],
-            email=request.POST['email'],
-            locality=request.POST['locality'],
-            address=request.POST['address'],
-            city=request.POST['city'],
-            state=request.POST['state'],
-            status='waiting'
-        )
-        user.save()
-        messages.success(request,"Registration successful!")
+        try:
+            user = UserRegistrationModel(
+                name=request.POST['name'],
+                loginid=request.POST['loginid'],
+                password=request.POST['password'],
+                mobile=request.POST['mobile'],
+                email=request.POST['email'],
+                locality=request.POST['locality'],
+                address=request.POST['address'],
+                city=request.POST['city'],
+                state=request.POST['state'],
+                status='waiting'
+            )
+            user.save()
+            messages.success(request, "Registration successful! please login.")
+        except Exception as e:
+            print(f"Registration Error: {e}")
+            messages.error(request, f"Registration failed: {str(e)}")
     return render(request, 'UserRegistrations.html') 
 
  
