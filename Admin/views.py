@@ -29,7 +29,7 @@ def RegisterUsersView(request):
 
 
 
-def ActivaUsers(request):
+def ActivateUsers(request):
     if request.method == 'GET':
         user_id = request.GET.get('uid')
         

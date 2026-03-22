@@ -30,14 +30,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", mainView.index, name="index"),
     path("index", mainView.index, name="index"),
-    path("Adminlogin", mainView.AdminLogin, name="AdminLogin"),
+    path("AdminLogin", mainView.AdminLogin, name="AdminLogin"),
     path("UserLogin", mainView.UserLogin, name="UserLogin"),
     path('AdminHome', mainView.adminhome, name='AdminHome'),
   
     # admin views
     path("AdminLogincheck", av.AdminLoginCheck, name="AdminLoginCheck"),
     path('userDetails', av.RegisterUsersView, name='RegisterUsersView'),
-    path('ActivUsers/', av.ActivaUsers, name='activate_users'),
+    path('ActivateUsers/', av.ActivateUsers, name='activate_users'),
     path('DeleteUsers/', av.DeleteUsers, name='delete_users'),
     
     #userurls
