@@ -251,8 +251,14 @@ def get_model():
         current_mtime = os.path.getmtime(MODEL_PATH)
         if _MODEL is None or _MODEL_MTIME != current_mtime:
             print(f"Loading/Reloading model from {MODEL_PATH}...")
-            _MODEL = load_model(MODEL_PATH)
-            _MODEL_MTIME = current_mtime
+            try:
+                # Use compile=False to save memory and avoid optimizer issues during deployment
+                _MODEL = load_model(MODEL_PATH, compile=False)
+                _MODEL_MTIME = current_mtime
+            except Exception as e:
+                print(f"Error loading model: {e}")
+                _MODEL = None
+                _MODEL_MTIME = None
     else:
         print(f"Model file not found at {MODEL_PATH}")
         _MODEL = None
