@@ -22,8 +22,6 @@ from users import views as usr
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
-from users import views as uv
-
 
 
 urlpatterns = [
@@ -41,7 +39,7 @@ urlpatterns = [
     path('DeleteUsers/', av.DeleteUsers, name='delete_users'),
     
     #userurls
-    path('UserRegisterForm',uv.UserRegisterActions,name='UserRegisterForm'),
+    path('UserRegisterForm',usr.UserRegisterActions,name='UserRegisterForm'),
     path("UserLoginCheck/", usr.UserLoginCheck, name="UserLoginCheck"),
     path("UserHome/", usr.UserHome, name="UserHome"),
     path("predictions/", usr.predictions, name="predictions"),

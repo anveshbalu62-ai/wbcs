@@ -56,6 +56,12 @@
                     </div>
                 </div>
                 {% endfor %}
+                <div style="margin-top: 0.5rem; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1);">
+                    <div style="display: flex; justify-content: space-between; font-size: 1rem; font-weight: 700;" title="Overall model accuracy across all subtypes in testing">
+                        <span>MODEL OVERALL ACCURACY</span>
+                        <span style="color: var(--success);">{{ model_overall_accuracy }}%</span>
+                    </div>
+                </div>
             </div>
             {% endif %}
 

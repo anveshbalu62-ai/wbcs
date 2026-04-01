@@ -107,7 +107,7 @@ def training_thread():
         val_data_dir = os.path.join('media', 'main_dataset', 'validation')
 
         batch_size = 32
-        epochs = 5
+        epochs = 3
 
         # Generators
         train_datagen = ImageDataGenerator(
@@ -177,7 +177,7 @@ def training_thread():
 
         history2 = model.fit(
             train_batches,
-            epochs=5,
+            epochs=3,
             validation_data=val_batches,
             callbacks=callbacks
         )
@@ -197,8 +197,8 @@ def training_thread():
         model.save(MODEL_PATH)
 
         # 🔥 PLOTS
-        acc_path = os.path.join(settings.MEDIA_ROOT, 'accuracy_plot.png')
-        loss_path = os.path.join(settings.MEDIA_ROOT, 'loss_plot.png')
+        acc_path = os.path.join(settings.MEDIA_ROOT, 'accuracy_plot.jpeg')
+        loss_path = os.path.join(settings.MEDIA_ROOT, 'loss_plot.jpeg')
 
         plt.figure()
         plt.plot(full_acc)
@@ -263,6 +263,21 @@ def predictions(request):
     predicted_class = None
     file_url = None
     confidence_scores = None
+    model_overall_accuracy = None
+    
+    import json
+    try:
+        diag_path = os.path.join(settings.BASE_DIR, 'diagnostics.json')
+        if os.path.exists(diag_path):
+            with open(diag_path, 'r') as f:
+                data = json.load(f)
+                test_data = data.get('test', {})
+                total_correct = sum(v.get('correct', 0) for v in test_data.values())
+                total_samples = sum(v.get('total', 0) for v in test_data.values())
+                if total_samples > 0:
+                    model_overall_accuracy = round((total_correct / total_samples) * 100, 2)
+    except Exception as e:
+        print("Error loading diagnostics:", e)
     
     model = get_model()
     if model is None:
@@ -302,5 +317,6 @@ def predictions(request):
         'predicted_class': predicted_class,
         'image_url': file_url,
         'confidence_scores': confidence_scores,
+        'model_overall_accuracy': model_overall_accuracy,
     })
 
