@@ -26,6 +26,7 @@ from django.views.static import serve
 
 
 urlpatterns = [
+    path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}),
     path('admin/', admin.site.urls),
     path("", mainView.index, name="index"),
     path("index", mainView.index, name="index"),
@@ -47,8 +48,6 @@ urlpatterns = [
     path("training/", usr.training, name="training"),
     path("index/", usr.index, name="index"),
    
-   # Serve media files on Render (Production)
-   re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
