@@ -40,6 +40,15 @@
     </aside>
 
     <main class="main-content animate-fade">
+        {% if messages %}
+            <div style="margin-bottom: 1rem;">
+                {% for message in messages %}
+                    <div style="padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; {% if message.tags == 'error' %}background-color: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #fca5a5;{% else %}background-color: rgba(34, 197, 94, 0.2); border: 1px solid #22c55e; color: #86efac;{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
             <div>
                 <h1 style="margin:0; font-size: 1.75rem;">White Blood Cell Diagnostic Tool</h1>

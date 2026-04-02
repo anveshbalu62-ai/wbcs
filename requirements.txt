@@ -1,8 +1,10 @@
 django
-tensorflow-cpu
+tensorflow-cpu==2.15.0
 numpy
 pillow
 gunicorn
 whitenoise
 pandas
 matplotlib
+h5py
+tf-keras
