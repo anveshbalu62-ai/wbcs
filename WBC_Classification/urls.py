@@ -15,13 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from WBC_Classification import views as mainView
 from Admin import views as av
 from users import views as usr
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
+from django.views.static import serve
 
 
 urlpatterns = [
@@ -46,6 +47,8 @@ urlpatterns = [
     path("training/", usr.training, name="training"),
     path("index/", usr.index, name="index"),
    
+   # Serve media files on Render (Production)
+   re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
